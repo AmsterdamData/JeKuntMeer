@@ -1,5 +1,5 @@
 <?php
-    error_reporting(E_ALL);
+    error_reporting(0);
     date_default_timezone_set("CET");
 
     $mapping = Array(
@@ -19,6 +19,7 @@
         "koken en eten" => 5,
         "kinderen en opvoeden" => 6,
         "sport" => 7,
+        "sport en bewegen" => 7,
         "transport / vervoer" => 8,
         "zorg / mantelzorg" => 9,
         "maatje of buddy" => 10,
@@ -36,7 +37,7 @@
     $txt = str_replace("xmlns:geo=\"http://www.w3.org/2003/01/geo/wgs84_pos#\"","xmlns:georss=\"http://www.georss.org/georss\" xmlns:gml=\"http://www.opengis.net/gml\"", $txt);
     
     
-    $pattern = "/(\<geo\:point\>)([-+]?[0-9]*\.?[0-9]+) ([-+]?[0-9]*\.?[0-9]+)(\<\/geo\:point\>)/i";
+    $pattern = "/(\<georss\:point\>)([-+]?[0-9]*\.?[0-9]+) ([-+]?[0-9]*\.?[0-9]+)(\<\/georss\:point\>)/i";
     $replace = "<latitude>$2</latitude><longitude>$3</longitude>";
     $txt = preg_replace($pattern, $replace, $txt);
     
